@@ -1,0 +1,21 @@
+name: 'Run in compose'
+description: 'Launch docker compose and wait for an image in it to exit'
+inputs:
+  compose-file:
+    description: 'Docker-compose file to run'
+    required: false
+    default: docker-compose.yml
+  service-name:
+    description: 'Name of the service to wait for'
+    required: true
+  project-name: 
+    description: 'Name of the compose project to create'
+    required: false
+    default: 'run-in-compose'
+runs:
+  using: "composite"
+  steps:
+    - id: run-in-compose
+      shell: bash
+      run: |
+        . ${{ github.action_path }}/run-in-compose.sh ${{ inputs.service-name }} ${{ inputs.project-name }} ${{ inputs.compose-file }}
