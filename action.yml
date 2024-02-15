@@ -12,6 +12,10 @@ inputs:
     description: 'Name of the compose project to create'
     required: false
     default: 'run-in-compose'
+  env-vars:
+    description: 'Environment variables to pass to the service (as a JSON string)'
+    required: false
+    default: '{}'
 runs:
   using: "composite"
   steps:
